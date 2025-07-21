@@ -92,12 +92,12 @@ const authController = {
             }
             const encryptedPassword=await bcrypt.hash(password,10);
 
-            const user = new Users({
+            const user = await Users.create({
                 email:username,
                 password:encryptedPassword,
                 name:name,
                 role:'admin',
-                credits:user.credits
+                credits:0
             });
 
             await user.save();
